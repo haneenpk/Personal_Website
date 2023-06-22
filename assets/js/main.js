@@ -233,3 +233,84 @@
   new PureCounter();
 
 })()
+
+  // form checking
+
+function checking(){
+  const name = document.getElementById('name').value;
+  const nameError = document.getElementById('form-error');
+  const email = document.getElementById('email').value;
+  const emailError = document.getElementById('form-error');
+  const subject = document.getElementById('subject').value;
+  const subjectError = document.getElementById('form-error');
+  const message = document.getElementById('message').value;
+  const messageError = document.getElementById('form-error');
+
+  const patternName = /[0-9(),-_.]/;
+
+  if(name.length<=3){
+    nameError.innerHTML = "Name must be 3 or more charecter longer";
+    return false;
+  }else{
+    nameError.innerHTML = "";
+  }
+
+  if(patternName.test(name)){
+    nameError.innerHTML = "Name cannot contain any Numbers and special charcters";
+    return false;
+  }else{
+    nameError.innerHTML = "";
+  }
+
+  if(email=="" || email==null){
+    emailError.innerHTML = "Email Must be filled";
+    return false;
+  }else{
+    emailError.innerHTML = "";
+  }
+
+  if(email.includes("@"&&".com")){
+    emailError.innerHTML = "";
+  }else{
+    emailError.innerHTML = "Email must contain @ and .com";
+    return false;
+  }
+
+  if(subject=="" || email==null){
+    subjectError.innerHTML = "Subject Must be filled";
+    return false;
+  }else{
+    subjectError.innerHTML = "";
+  }
+
+  if(message=="" || message==null){
+    messageError.innerHTML = "Message Must be filled";
+    return false;
+  }else{
+    messageError.innerHTML = "";
+  }
+
+  if(message.length<=4){
+    messageError.innerHTML = "Name must be 4 or more charecter longer";
+    return false;
+  }else{
+    messageError.innerHTML = "";
+  }
+
+  $.ajax({
+    url:"https://script.google.com/macros/s/AKfycbwVnMeswYsLnD6_KODZc0wssDMT_89YSMJHZ_MgEqEbQE3hhntyIJPCayfDnVaiqo_E/exec",
+    data:$("#submit-form").serialize(),
+    method:"post",
+    success:function (response){
+        alert("Form submitted successfully")
+        window.location.reload()
+        //window.location.href="https://google.com"
+    },
+    error:function (err){
+        alert("Something Error")
+
+    }
+})
+
+  return true
+}

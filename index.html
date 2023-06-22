@@ -364,34 +364,33 @@
                       </h5>
                     </div>
                     <div>
-                      <form action="" id="submit-form" role="form" class="php-email-form">
+                      <form action="" id="submit-form" role="form" class="php-email-form" onsubmit="return checking()">
                         <div class="row">
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                              <input type="text" class="form-control" name="email" id="email" placeholder="Your Email">
                             </div>
                           </div>
                           <div class="col-md-12 mb-3">
                             <div class="form-group">
-                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+                              <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
                             </div>
                           </div>
                           <div class="col-md-12">
                             <div class="form-group">
-                              <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                              <textarea class="form-control" id="message" name="message" rows="5" placeholder="Message"></textarea>
                             </div>
-                          </div>
-                          <div class="col-md-12 text-center my-3">
-                            <div class="loading">Loading</div>
-                            <div class="sent-message">Your message has been sent. Thank you!</div>
                           </div>
                           <div class="col-md-12 text-center">
                             <button type="submit" class="button button-a button-big button-rouded">Send Message</button>
+                          </div>
+                          <div style="color: red;">
+                            <p id="form-error"></p>
                           </div>
                         </div>
                       </form>
@@ -465,23 +464,10 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    $("#submit-form").submit((e)=>{
-        e.preventDefault()
-        $.ajax({
-            url:"https://script.google.com/macros/s/AKfycbwVnMeswYsLnD6_KODZc0wssDMT_89YSMJHZ_MgEqEbQE3hhntyIJPCayfDnVaiqo_E/exec",
-            data:$("#submit-form").serialize(),
-            method:"post",
-            success:function (response){
-                alert("Form submitted successfully")
-                window.location.reload()
-                //window.location.href="https://google.com"
-            },
-            error:function (err){
-                alert("Something Error")
-
-            }
-        })
-    })
+    // $("#submit-form").submit((e)=>{
+    //     e.preventDefault()
+    //    console.log('sub');
+    // })
 </script>
 
 </body>
